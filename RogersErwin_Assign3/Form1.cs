@@ -15,6 +15,11 @@ namespace RogersErwin_Assign3
         public Form1()
         {
             InitializeComponent();
+
+            GuildCollection guildCollection = new GuildCollection();
+            JARDriver jarDriver = new JARDriver(ref OutputListBox);
+
+            jarDriver.PrintAllPlayers();
         }
     }
 }
