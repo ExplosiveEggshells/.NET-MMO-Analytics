@@ -44,7 +44,7 @@ namespace RogersErwin_Assign3
             ComboBox cb = sender as ComboBox;
             if (cb == null) return;
 
-            GuildType guildType = (GuildType) cb.SelectedIndex;
+            GuildType guildType = (GuildType)cb.SelectedIndex;
 
             var GuildsPerType =
                 from KeyValuePair<uint, Guild> guild in GuildCollection.Guild_Collection
@@ -56,6 +56,30 @@ namespace RogersErwin_Assign3
             foreach (Guild guild in GuildsPerType)
             {
                 outputListBox.Items.Add(guild.ToString());
+            }
+        }
+
+        public void ShowUnfulfilledRoles(object sender)
+        {
+            outputListBox.Items.Clear();
+
+            RadioButton rb = sender as RadioButton;
+            if (rb == null) return;
+
+            string nameSuffix = rb.Name.Substring(rb.Name.Length-1);
+            Role selectedRole = (Role) int.Parse(nameSuffix);
+
+            var RoleUnfulfilled =
+                from KeyValuePair<uint, Player> player in PlayerCollection.Player_Collection
+                where (Globals.GetRolesByClass(player.Value.PlayerClass).Contains(selectedRole))
+                where (player.Value.PlayerRole != selectedRole)
+                select player.Value;
+
+            //outputListBox.Items.Add(RoleUnfulfilled.Count());
+
+            foreach (Player player in RoleUnfulfilled)
+            {
+                outputListBox.Items.Add(player.ToString());
             }
         }
     }

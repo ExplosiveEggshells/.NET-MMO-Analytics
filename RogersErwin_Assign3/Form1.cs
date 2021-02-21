@@ -19,6 +19,7 @@ namespace RogersErwin_Assign3
             InitializeComponent();
 
             GuildCollection guildCollection = new GuildCollection();
+            PlayerCollection playerCollection = new PlayerCollection();
             jarDriver = new JARDriver(ref OutputListBox);
 
             jarDriver.Initializer(ref GuildsPerTypeComboBox);
@@ -29,6 +30,12 @@ namespace RogersErwin_Assign3
         {
             if (jarDriver == null) return;
             jarDriver.ShowGuildsPerType(sender);
+        }
+
+        private void FulfillRadioClick(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.ShowUnfulfilledRoles(sender);
         }
     }
 }

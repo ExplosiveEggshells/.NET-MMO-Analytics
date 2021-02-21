@@ -383,8 +383,10 @@ namespace RogersErwin_Assign3
                     guildName = guildID.ToString();
                 }
             }
+            
+            guildName = "<" + guildName + ">";
 
-            string str = String.Format("Name: {0,20} | Race: {1, 8} | Class: {2,8} | Level: {3,3} | Guild: {4, 30}", Name, race, playerClass, Level, guildName);
+            string str = String.Format("Name: {0,20} | Race: {1, 8} | Class: {2,8} | Role: {3, 8} | Level: {4,3} | Guild: {5, 30}", Name, race, playerClass, role, Level, guildName);
             return str;
         }
 
@@ -393,6 +395,7 @@ namespace RogersErwin_Assign3
         public string Name { get { return name; } }
         public Race PlayerRace { get { return race; } }
         public Class PlayerClass { get { return playerClass; } set { playerClass = value; } }
+        public Role PlayerRole { get { return role; } set { role = value; } }
         public uint Level {
             get {
                 return level;
