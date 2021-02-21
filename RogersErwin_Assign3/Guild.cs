@@ -102,6 +102,7 @@ namespace RogersErwin_Assign3
         public uint ID { get { return id; } }
         public string Name { get { return name; } set { name = value; } }
         public string ServerName { get { return serverName; } set { serverName = value; } }
+        public GuildType Type { get { return type; } set { type = value; } }
 
     }
 }

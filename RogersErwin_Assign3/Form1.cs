@@ -12,14 +12,23 @@ namespace RogersErwin_Assign3
 {
     public partial class Form1 : Form
     {
+        JARDriver jarDriver;
+
         public Form1()
         {
             InitializeComponent();
 
             GuildCollection guildCollection = new GuildCollection();
-            JARDriver jarDriver = new JARDriver(ref OutputListBox);
+            jarDriver = new JARDriver(ref OutputListBox);
 
-            jarDriver.PrintAllPlayers();
+            jarDriver.Initializer(ref GuildsPerTypeComboBox);
+        }
+
+
+        private void GuildsPerTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.ShowGuildsPerType(sender);
         }
     }
 }

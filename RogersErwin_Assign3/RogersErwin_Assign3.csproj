@@ -59,7 +59,6 @@
     <Compile Include="Item.cs" />
     <Compile Include="ItemCollection.cs" />
     <Compile Include="JARDriver.cs" />
-    <Compile Include="OutLB.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerCollection.cs" />
     <Compile Include="Program.cs" />

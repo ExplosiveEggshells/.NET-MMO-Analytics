@@ -30,11 +30,32 @@ namespace RogersErwin_Assign3
             outputListBox = listBox;
         }
 
-        public void PrintAllPlayers()
+        public void Initializer(ref ComboBox guildsPerTypeComboBox)
         {
-            foreach (KeyValuePair<uint,Guild> guild in GuildCollection.Guild_Collection)
+
+            GuildType[] guildTypes = new GuildType[5] { GuildType.Casual, GuildType.MythicPlus, GuildType.PVP, GuildType.Questing, GuildType.Raiding };
+            UtilLib.AddToComboBox<GuildType>(guildTypes, ref guildsPerTypeComboBox);
+        }
+
+        public void ShowGuildsPerType(object sender)
+        {
+            outputListBox.Items.Clear();
+
+            ComboBox cb = sender as ComboBox;
+            if (cb == null) return;
+
+            GuildType guildType = (GuildType) cb.SelectedIndex;
+
+            var GuildsPerType =
+                from KeyValuePair<uint, Guild> guild in GuildCollection.Guild_Collection
+                where (guild.Value.Type == guildType)
+                select guild.Value;
+
+
+
+            foreach (Guild guild in GuildsPerType)
             {
-                outputListBox.Items.Add(guild.Value);
+                outputListBox.Items.Add(guild.ToString());
             }
         }
     }
