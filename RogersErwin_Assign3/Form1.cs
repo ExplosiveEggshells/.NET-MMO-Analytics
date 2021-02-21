@@ -20,7 +20,10 @@ namespace RogersErwin_Assign3
 
             GuildCollection guildCollection = new GuildCollection();
             PlayerCollection playerCollection = new PlayerCollection();
-            jarDriver = new JARDriver(ref OutputListBox);
+            jarDriver = new JARDriver(ref OutputListBox, ref PRSLRolesComboBox, ref PRSLServersComboBox,
+                ref PRSLMinLevelUpDown, ref PRSLMaxLevelUpDown);
+
+
 
             jarDriver.Initializer(ref GuildsPerTypeComboBox);
         }
@@ -36,6 +39,19 @@ namespace RogersErwin_Assign3
         {
             if (jarDriver == null) return;
             jarDriver.ShowUnfulfilledRoles(sender);
+        }
+
+        private void PRSLUpDownChange(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.ConstrainUpDowns(sender);
+            DoPSRLSearch(sender, e);
+        }
+
+        private void DoPSRLSearch(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.PlayersByRoleServerLevel();
         }
     }
 }
