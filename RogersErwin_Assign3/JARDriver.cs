@@ -89,20 +89,25 @@ namespace RogersErwin_Assign3
             outputListBox.Items.Add("Show All " + guildType + " Guilds");                   // Print header
             outputListBox.Items.Add("--------------------------------------------");
 
-            var GuildsPerType =                                                             // Query
+            var guildsPerType =                                                             // Query
                 from KeyValuePair<uint, Guild> guild in GuildCollection.Guild_Collection    // From every keyvalue pair in the guild collection...
                 where (guild.Value.Type == guildType)                                       // ...where the guild's type is the same as selected type...
-                select guild.Value;                                                         // Extract the matching Guilds.
+                group guild.Value by guild.Value.ServerName;                                // ...group matching Guilds by their ServerName.
 
 
-            foreach (Guild guild in GuildsPerType)                                          // Display all matching entries
+            foreach (var guildsByServer in guildsPerType)                                   // Loop through all groupings of guilds...
             {
-                outputListBox.Items.Add(guild.ToString());
+                outputListBox.Items.Add(guildsByServer.Key);                                    // Print the serverName of this grouping
+
+                foreach (Guild guild in guildsByServer)                                         // For every guild in this grouping...
+                {
+                    outputListBox.Items.Add("   " + guild.Name);                                    // Create a space and print the Guild's name
+                }
             }
 
 
             outputListBox.Items.Add("");
-            if (GuildsPerType.Count() == 0)                                                 // Print "No Results" or "END" if no results or some results were found respectively.
+            if (guildsPerType.Count() == 0)                                                 // Print "No Results" or "END" if no results or some results were found respectively.
             {
                 outputListBox.Items.Add("No Results");
             }
