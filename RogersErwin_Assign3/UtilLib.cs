@@ -21,7 +21,7 @@ namespace RogersErwin_Assign3
          * probably be an Enum, although it would defintely work with strings and some
          * other types as well.
          */
-        private static void AddToComboBox<T>(T[] objArray, ref ComboBox comboBox)
+        public static void AddToComboBox<T>(T[] objArray, ref ComboBox comboBox)
         {
             foreach (T obj in objArray)
             {
