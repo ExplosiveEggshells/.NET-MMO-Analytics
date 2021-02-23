@@ -26,6 +26,7 @@ namespace RogersErwin_Assign3
 
 
             jarDriver.Initializer(ref GuildsPerTypeComboBox);
+            jarDriver.PrcRaceInServer("Beta4Azeroth");
         }
 
 
