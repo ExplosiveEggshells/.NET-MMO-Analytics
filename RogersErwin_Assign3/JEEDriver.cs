@@ -181,7 +181,7 @@ namespace RogersErwin_Assign3
                     }
                     playersPerGuild++;
                 }
-                double percentMaxPlayers = Math.Round((double)maxLvl / (double)playersPerGuild * 100.00,2); // percentage of max lvl players in a guild
+                double percentMaxPlayers = ((double)maxLvl / (double)playersPerGuild * 100); // percentage of max lvl players in a guild
                 string formattedGuildName = "<" + guilds.Key.Name.ToString() + ">"; // this is how Rogness wanted each guiild name formatted
 
                 /**
@@ -190,7 +190,7 @@ namespace RogersErwin_Assign3
                  */
                 if (!Double.IsNaN(percentMaxPlayers))
                 {
-                    outputListBox.Items.Add(string.Format("{0,-30} {1,7}%", formattedGuildName, percentMaxPlayers.ToString()));
+                    outputListBox.Items.Add(String.Format("{0,-30} {1,8: 0.00}%", formattedGuildName, percentMaxPlayers));
                     outputListBox.Items.Add("");
                 }
             }
