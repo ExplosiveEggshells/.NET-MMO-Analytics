@@ -38,5 +38,11 @@ namespace RogersErwin_Assign3
             if (jeeDriver == null) return;
             jeeDriver.PercentageRaceFromServer(sender);
         }
+
+        private void MaxLvlPlayersQueryButton_Click(object sender, EventArgs e)
+        {
+            if (jeeDriver == null) return;
+            jeeDriver.PercentageMaxPlayerQuery();
+        }
     }
 }

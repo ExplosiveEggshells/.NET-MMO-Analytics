@@ -50,7 +50,7 @@
             this.OutputListBox.ItemHeight = 16;
             this.OutputListBox.Location = new System.Drawing.Point(373, 42);
             this.OutputListBox.Name = "OutputListBox";
-            this.OutputListBox.Size = new System.Drawing.Size(599, 516);
+            this.OutputListBox.Size = new System.Drawing.Size(827, 516);
             this.OutputListBox.TabIndex = 0;
             // 
             // OutputBoxLabel
@@ -100,6 +100,7 @@
             this.MaxLvlPlayersQueryButton.TabIndex = 5;
             this.MaxLvlPlayersQueryButton.Text = "Show Results";
             this.MaxLvlPlayersQueryButton.UseVisualStyleBackColor = true;
+            this.MaxLvlPlayersQueryButton.Click += new System.EventHandler(this.MaxLvlPlayersQueryButton_Click);
             // 
             // ClassComboBox
             // 
@@ -170,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 583);
+            this.ClientSize = new System.Drawing.Size(1212, 583);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

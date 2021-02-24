@@ -86,7 +86,44 @@ namespace RogersErwin_Assign3
 
         public void PercentageMaxPlayerQuery()
         {
+            var MaxLvlPlayerFromAllGuilds =
+                from KeyValuePair<uint, Player> player in PlayerCollection.Player_Collection
+                orderby player.Value.GuildID
+                group player.Value.Level by GuildCollection.At(player.Value.GuildID).Name;
 
+            // Header
+            outputListBox.Items.Clear();
+            outputListBox.Items.Add("Percentage of Max Level Players in All Guilds");
+            outputListBox.Items.Add("--------------------------------------------");
+
+            foreach (var groups in MaxLvlPlayerFromAllGuilds)
+            {
+                
+
+                uint maxLvl = 0;
+                uint playersPerGuild = 0;
+                foreach (var item in groups)
+                {
+                    if (item == Globals.Max_Level)
+                    {
+                        maxLvl++;
+                    }
+                    playersPerGuild++;
+                }
+                double percentMaxPlayers = Math.Round((double)maxLvl / (double)playersPerGuild * 100.00,2);
+
+                string formattedGuildName = "<" + groups.Key.ToString() + ">";
+                outputListBox.Items.Add(string.Format("{0,-30} {1,7}%", formattedGuildName, percentMaxPlayers.ToString()));
+                outputListBox.Items.Add("");
+            }
+
+            // Footer
+            outputListBox.Items.Add("END RESULTS");
+            outputListBox.Items.Add("--------------------------------------------");
+            // select from PlayerCollection
+            // group by guild
+            // keep track of each players level in a guild
+            // PctMaxLvlPlayers = maxLvlPlayers / totalPlayersInAGuild;
         }
     }
 }
