@@ -37,7 +37,62 @@ namespace RogersErwin_Assign3
             UtilLib.AddToComboBox<string>(GuildCollection.GetServerNames().ToArray<string>(), ref ServerComboBox);
             UtilLib.AddToComboBox<string>(GuildCollection.GetServerNames().ToArray<string>(), ref PercentageOfRaceComboBox);
         }
-        
+
+        /**
+         * Objective: 1
+         * 
+         * When AllClassTypeQueryButton_Click is triggered this function is called
+         * Which queries the PlayerCollection and returns a collection of players whos class
+         * matched the selected ClassComboBox and who exists on the selected server from ServerComboBox.
+         */
+        public void PlayersOfClassByServer(object sender)
+        {
+            if (ClassComboBox.SelectedIndex != -1 && ServerComboBox.SelectedIndex != -1)
+            {
+                // Header
+                outputListBox.Items.Clear();
+                outputListBox.Items.Add(string.Format("All {0} from {1}", ClassComboBox.SelectedItem, ServerComboBox.SelectedItem));
+                outputListBox.Items.Add("--------------------------------------------");
+                
+                var playersByClassAndServer =
+                    from player in PlayerCollection.Player_Collection
+                    where (player.Value.PlayerClass == (Class)ClassComboBox.SelectedIndex)
+                    where (GuildCollection.At(player.Value.GuildID).ServerName == ServerComboBox.SelectedItem.ToString())
+                    orderby player.Value.Level
+                    select player.Value;
+
+                if (playersByClassAndServer.Count() == 0)
+                {
+                    outputListBox.Items.Add(string.Format("There are no {0} class players on {1}.", ClassComboBox.SelectedItem, ServerComboBox.SelectedItem));
+                }
+                else
+                {
+                    foreach (var player in playersByClassAndServer)
+                    {
+                        outputListBox.Items.Add(player);
+                    }
+                }
+
+                // Footer
+                outputListBox.Items.Add("");
+                outputListBox.Items.Add("END RESULTS");
+                outputListBox.Items.Add("--------------------------------------------");
+            }
+            else
+            {
+                outputListBox.Items.Clear();
+                if (ClassComboBox.SelectedIndex == -1) outputListBox.Items.Add("Please select a Class Type to complete this query.");
+                if (ServerComboBox.SelectedIndex == -1) outputListBox.Items.Add("Please select a Server to complete this query.");
+            }
+        }
+
+        /**
+         * Objective: 2
+         * 
+         * when the PercentageOfRaceComboBox_SelectedIndexChanged event is triggered this function is called
+         * which queries the PlayerCollection and groups players by their race for the server name that is selected
+         * and displays, in the outputListBox, the percentage of players race on the selected server.
+         */
         public void PercentageRaceFromServer(object sender)
         {
             ComboBox cb = sender as ComboBox;
@@ -84,46 +139,54 @@ namespace RogersErwin_Assign3
             outputListBox.Items.Add("--------------------------------------------");
         }
 
+        /**
+         * Objective: 6
+         * 
+         * When the MaxLvlPlayersQueryButton_Click is triggered this function is called
+         * which queries the PlayerCollection and groups players levels by their guild
+         * and displays, in the outputListBox, the percentage of players who's level is maxed out per guild.
+         */
         public void PercentageMaxPlayerQuery()
         {
-            var MaxLvlPlayerFromAllGuilds =
+            var MaxLvlPlayerFromAllGuilds = // groups of guilds and player levels in each guild ... that's it
                 from KeyValuePair<uint, Player> player in PlayerCollection.Player_Collection
-                orderby player.Value.GuildID
-                group player.Value.Level by GuildCollection.At(player.Value.GuildID).Name;
+                group player.Value.Level by GuildCollection.At(player.Value.GuildID);
 
             // Header
             outputListBox.Items.Clear();
             outputListBox.Items.Add("Percentage of Max Level Players in All Guilds");
             outputListBox.Items.Add("--------------------------------------------");
 
-            foreach (var groups in MaxLvlPlayerFromAllGuilds)
+            foreach (var guilds in MaxLvlPlayerFromAllGuilds) // loop through all the guilds
             {
-                
+                uint maxLvl = 0; // this will equal the number of max level players in a given guild after the inner foreach
+                uint playersPerGuild = 0; // after the inner foreach, this will equal the number of players in a given guild
 
-                uint maxLvl = 0;
-                uint playersPerGuild = 0;
-                foreach (var item in groups)
+                foreach (var playerLvl in guilds) // loop through all the player levels in a guild
                 {
-                    if (item == Globals.Max_Level)
+                    if (playerLvl == Globals.Max_Level) // check 
                     {
                         maxLvl++;
                     }
                     playersPerGuild++;
                 }
-                double percentMaxPlayers = Math.Round((double)maxLvl / (double)playersPerGuild * 100.00,2);
+                double percentMaxPlayers = Math.Round((double)maxLvl / (double)playersPerGuild * 100.00,2); // percentage of max lvl players in a guild
+                string formattedGuildName = "<" + guilds.Key.Name.ToString() + ">"; // this is how Rogness wanted each guiild name formatted
 
-                string formattedGuildName = "<" + groups.Key.ToString() + ">";
-                outputListBox.Items.Add(string.Format("{0,-30} {1,7}%", formattedGuildName, percentMaxPlayers.ToString()));
-                outputListBox.Items.Add("");
+                /**
+                 * NOTE: some of the Guilds ended up with zero Player members, which can make your division produce a NaN (not a number)
+                 * result when dividing by zero. Omit those records altogether.
+                 */
+                if (!Double.IsNaN(percentMaxPlayers))
+                {
+                    outputListBox.Items.Add(string.Format("{0,-30} {1,7}%", formattedGuildName, percentMaxPlayers.ToString()));
+                    outputListBox.Items.Add("");
+                }
             }
 
             // Footer
             outputListBox.Items.Add("END RESULTS");
             outputListBox.Items.Add("--------------------------------------------");
-            // select from PlayerCollection
-            // group by guild
-            // keep track of each players level in a guild
-            // PctMaxLvlPlayers = maxLvlPlayers / totalPlayersInAGuild;
         }
     }
 }

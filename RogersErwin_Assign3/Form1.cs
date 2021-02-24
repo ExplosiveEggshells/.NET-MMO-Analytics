@@ -33,16 +33,37 @@ namespace RogersErwin_Assign3
 
         }
 
+        #region EVENT_HANDLERS
+        /**
+         * Objective: 1 - Event
+         * 
+         * See PlayersOfClassByServer(object sender) for all details
+         */
+        private void AllClassTypeQueryButton_Click(object sender, EventArgs e)
+        {
+            if (jeeDriver == null) return;
+            jeeDriver.PlayersOfClassByServer(sender);
+        }
+        /**
+         * Objective: 2 - Event
+         * 
+         * See PercentageRaceFromServer(object sender) for all details
+         */
         private void PercentageOfRaceComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (jeeDriver == null) return;
             jeeDriver.PercentageRaceFromServer(sender);
         }
-
+        /**
+         * Objective: 3 - Event
+         * 
+         * See PercentageMaxPlayerQuery() for all details
+         */
         private void MaxLvlPlayersQueryButton_Click(object sender, EventArgs e)
         {
             if (jeeDriver == null) return;
             jeeDriver.PercentageMaxPlayerQuery();
         }
+        #endregion
     }
 }

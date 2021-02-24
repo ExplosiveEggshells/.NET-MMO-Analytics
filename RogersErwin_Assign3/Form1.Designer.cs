@@ -67,7 +67,7 @@
             // 
             this.PercentageOfRaceLabel.AutoSize = true;
             this.PercentageOfRaceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PercentageOfRaceLabel.Location = new System.Drawing.Point(13, 107);
+            this.PercentageOfRaceLabel.Location = new System.Drawing.Point(13, 208);
             this.PercentageOfRaceLabel.Name = "PercentageOfRaceLabel";
             this.PercentageOfRaceLabel.Size = new System.Drawing.Size(344, 20);
             this.PercentageOfRaceLabel.TabIndex = 2;
@@ -76,7 +76,7 @@
             // PercentageOfRaceComboBox
             // 
             this.PercentageOfRaceComboBox.FormattingEnabled = true;
-            this.PercentageOfRaceComboBox.Location = new System.Drawing.Point(17, 148);
+            this.PercentageOfRaceComboBox.Location = new System.Drawing.Point(17, 249);
             this.PercentageOfRaceComboBox.Name = "PercentageOfRaceComboBox";
             this.PercentageOfRaceComboBox.Size = new System.Drawing.Size(106, 21);
             this.PercentageOfRaceComboBox.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.PercentageOfMaxLvlLabel.AutoSize = true;
             this.PercentageOfMaxLvlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PercentageOfMaxLvlLabel.Location = new System.Drawing.Point(12, 176);
+            this.PercentageOfMaxLvlLabel.Location = new System.Drawing.Point(13, 397);
             this.PercentageOfMaxLvlLabel.Name = "PercentageOfMaxLvlLabel";
             this.PercentageOfMaxLvlLabel.Size = new System.Drawing.Size(324, 20);
             this.PercentageOfMaxLvlLabel.TabIndex = 4;
@@ -94,7 +94,7 @@
             // 
             // MaxLvlPlayersQueryButton
             // 
-            this.MaxLvlPlayersQueryButton.Location = new System.Drawing.Point(17, 199);
+            this.MaxLvlPlayersQueryButton.Location = new System.Drawing.Point(18, 420);
             this.MaxLvlPlayersQueryButton.Name = "MaxLvlPlayersQueryButton";
             this.MaxLvlPlayersQueryButton.Size = new System.Drawing.Size(96, 23);
             this.MaxLvlPlayersQueryButton.TabIndex = 5;
@@ -136,6 +136,7 @@
             this.AllClassTypeQueryButton.TabIndex = 9;
             this.AllClassTypeQueryButton.Text = "Show Results";
             this.AllClassTypeQueryButton.UseVisualStyleBackColor = true;
+            this.AllClassTypeQueryButton.Click += new System.EventHandler(this.AllClassTypeQueryButton_Click);
             // 
             // label1
             // 
@@ -161,7 +162,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 127);
+            this.label3.Location = new System.Drawing.Point(14, 228);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 18);
             this.label3.TabIndex = 12;
