@@ -261,6 +261,111 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Max";
             // 
+            // PercentageOfRaceLabel
+            // 
+            this.PercentageOfRaceLabel.AutoSize = true;
+            this.PercentageOfRaceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PercentageOfRaceLabel.Location = new System.Drawing.Point(13, 208);
+            this.PercentageOfRaceLabel.Name = "PercentageOfRaceLabel";
+            this.PercentageOfRaceLabel.Size = new System.Drawing.Size(344, 20);
+            this.PercentageOfRaceLabel.TabIndex = 2;
+            this.PercentageOfRaceLabel.Text = "Percentage of Each Race From a Single Server";
+            // 
+            // PercentageOfRaceComboBox
+            // 
+            this.PercentageOfRaceComboBox.FormattingEnabled = true;
+            this.PercentageOfRaceComboBox.Location = new System.Drawing.Point(17, 249);
+            this.PercentageOfRaceComboBox.Name = "PercentageOfRaceComboBox";
+            this.PercentageOfRaceComboBox.Size = new System.Drawing.Size(106, 21);
+            this.PercentageOfRaceComboBox.TabIndex = 3;
+            this.PercentageOfRaceComboBox.SelectedIndexChanged += new System.EventHandler(this.PercentageOfRaceComboBox_SelectedIndexChanged);
+            // 
+            // PercentageOfMaxLvlLabel
+            // 
+            this.PercentageOfMaxLvlLabel.AutoSize = true;
+            this.PercentageOfMaxLvlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PercentageOfMaxLvlLabel.Location = new System.Drawing.Point(13, 397);
+            this.PercentageOfMaxLvlLabel.Name = "PercentageOfMaxLvlLabel";
+            this.PercentageOfMaxLvlLabel.Size = new System.Drawing.Size(324, 20);
+            this.PercentageOfMaxLvlLabel.TabIndex = 4;
+            this.PercentageOfMaxLvlLabel.Text = "Percentage of Max Level Players in All Guilds";
+            // 
+            // MaxLvlPlayersQueryButton
+            // 
+            this.MaxLvlPlayersQueryButton.Location = new System.Drawing.Point(18, 420);
+            this.MaxLvlPlayersQueryButton.Name = "MaxLvlPlayersQueryButton";
+            this.MaxLvlPlayersQueryButton.Size = new System.Drawing.Size(96, 23);
+            this.MaxLvlPlayersQueryButton.TabIndex = 5;
+            this.MaxLvlPlayersQueryButton.Text = "Show Results";
+            this.MaxLvlPlayersQueryButton.UseVisualStyleBackColor = true;
+            this.MaxLvlPlayersQueryButton.Click += new System.EventHandler(this.MaxLvlPlayersQueryButton_Click);
+            // 
+            // ClassComboBox
+            // 
+            this.ClassComboBox.FormattingEnabled = true;
+            this.ClassComboBox.Location = new System.Drawing.Point(17, 83);
+            this.ClassComboBox.Name = "ClassComboBox";
+            this.ClassComboBox.Size = new System.Drawing.Size(106, 21);
+            this.ClassComboBox.TabIndex = 7;
+            // 
+            // AllClassTypeLabel
+            // 
+            this.AllClassTypeLabel.AutoSize = true;
+            this.AllClassTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllClassTypeLabel.Location = new System.Drawing.Point(13, 42);
+            this.AllClassTypeLabel.Name = "AllClassTypeLabel";
+            this.AllClassTypeLabel.Size = new System.Drawing.Size(254, 20);
+            this.AllClassTypeLabel.TabIndex = 6;
+            this.AllClassTypeLabel.Text = "All Class Type from a Single Server";
+            // 
+            // ServerComboBox
+            // 
+            this.ServerComboBox.FormattingEnabled = true;
+            this.ServerComboBox.Location = new System.Drawing.Point(136, 83);
+            this.ServerComboBox.Name = "ServerComboBox";
+            this.ServerComboBox.Size = new System.Drawing.Size(106, 21);
+            this.ServerComboBox.TabIndex = 8;
+            // 
+            // AllClassTypeQueryButton
+            // 
+            this.AllClassTypeQueryButton.Location = new System.Drawing.Point(271, 81);
+            this.AllClassTypeQueryButton.Name = "AllClassTypeQueryButton";
+            this.AllClassTypeQueryButton.Size = new System.Drawing.Size(96, 23);
+            this.AllClassTypeQueryButton.TabIndex = 9;
+            this.AllClassTypeQueryButton.Text = "Show Results";
+            this.AllClassTypeQueryButton.UseVisualStyleBackColor = true;
+            this.AllClassTypeQueryButton.Click += new System.EventHandler(this.AllClassTypeQueryButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 18);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Class";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(133, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 18);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Server";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(14, 228);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 18);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Server";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
