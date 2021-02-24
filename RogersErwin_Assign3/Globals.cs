@@ -16,7 +16,6 @@ namespace RogersErwin_Assign3
 {
     static class Globals
     {
-        private static uint NUM_RACES = 4;
         private static uint MAX_ILVL = 360;
         private static uint MAX_PRIMARY = 200;
         private static uint MAX_STAMINA = 275;

@@ -5,11 +5,6 @@
  * This static class contains a few methods that are universially
  * useful throughout the rest of the project.
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RogersErwin_Assign3
