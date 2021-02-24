@@ -384,7 +384,7 @@ namespace RogersErwin_Assign3
                 }
             }
 
-            string str = String.Format("Name: {0,20} | Race: {1, 8} | Class: {2,8} | Level: {3,3} | Guild: {4, 30}", Name, race, playerClass, Level, guildName);
+            string str = String.Format("Name: {0,-15}({1,-8} - {2,-6}) Race: {3,-8} Level: {4,3} Guild: <{5}>", Name, playerClass, role, race, level, guildName);
             return str;
         }
 

@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * NAME: Form1.cs
+ * AUTHORS: Jake Rogers (z1826513), John Erwin (z1856469)
+ * 
+ * Serves the GUI to the user and calls JEEDriver and JARDriver to
+ * fill multiple components with dynamically-intialized data 
+ * (Such as the ListBoxes and the ComboBoxes).
+ * 
+ * Furthermore, it also contains definitions for event-handlers.
+ */
+using System;
 using System.Windows.Forms;
 
 namespace RogersErwin_Assign3
 {
     public partial class Form1 : Form
     {
-        JEEDriver jeeDriver;
+        JEEDriver jeeDriver; // instantiate JEEDriver class outside of main for wider scope
         public Form1()
         {
             InitializeComponent();
@@ -21,18 +24,14 @@ namespace RogersErwin_Assign3
             PlayerCollection playerCollection = new PlayerCollection();
             JARDriver jarDriver = new JARDriver(ref OutputListBox);
 
-            jeeDriver = new JEEDriver(ref OutputListBox,
-                                      ref ClassComboBox,
-                                      ref ServerComboBox,
-                                      ref AllClassTypeQueryButton,
-                                      ref PercentageOfRaceComboBox,
-                                      ref MaxLvlPlayersQueryButton
-                                      );
+            jeeDriver = new JEEDriver(ref OutputListBox, ref ClassComboBox, ref ServerComboBox);
             jeeDriver.Initializer(ref ClassComboBox, ref ServerComboBox, ref PercentageOfRaceComboBox);
+
             jarDriver.PrintAllPlayers();
 
         }
 
+        // DELETE ME: Hey Jake, here are all my event handlers, feel free to move things around.
         #region EVENT_HANDLERS
         /**
          * Objective: 1 - Event

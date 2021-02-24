@@ -1,36 +1,45 @@
-﻿using System;
+﻿/*
+ * NAME: JEEDriver.cs
+ * AUTHORS: Jake Rogers (z1826513), John Erwin (z1856469)
+ * 
+ * This class represents 3 of the 6 objectives required for Assignment 3
+ * 
+ * Objective 1: All Players of a single Class, from a single Server
+ * Objective 2: % of each Race from a single Server
+ * Objective 6: Percentage of max Level Players in all Guilds
+ * 
+ * See each function for further details
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RogersErwin_Assign3
 {
     class JEEDriver
     {
+        // Members
         private ListBox outputListBox;
         private ComboBox ClassComboBox;
         private ComboBox ServerComboBox;
-        private Button AllClassTypeQueryButton;
-        private ComboBox PercentageOfRaceComboBox;
-        private Button MaxLvlPlayersQueryButton;
 
-        public JEEDriver(ref ListBox outputListBox, 
-                         ref ComboBox ClassComboBox, 
-                         ref ComboBox ServerComboBox, 
-                         ref Button AllClassTypeQueryButton,
-                         ref ComboBox PercentageOfRaceComboBox,
-                         ref Button MaxLvlPlayersQueryButton)
+        // Constructor
+        public JEEDriver(ref ListBox outputListBox, ref ComboBox ClassComboBox, ref ComboBox ServerComboBox)
         {
             this.outputListBox = outputListBox;
             this.ClassComboBox = ClassComboBox;
             this.ServerComboBox = ServerComboBox;
-            this.AllClassTypeQueryButton = AllClassTypeQueryButton;
-            this.PercentageOfRaceComboBox = PercentageOfRaceComboBox;
-            this.MaxLvlPlayersQueryButton = MaxLvlPlayersQueryButton;
         }
 
+        /**
+         * Initializer:
+         * 
+         * takes refs to ComboBoxes and populates each ComboBox with the appropriate data by calling AddToComboBox. 
+         * see UtilLib.cs for more information on AddToComboBox
+         * 
+         */
         public void Initializer(ref ComboBox ClassComboBox, ref ComboBox ServerComboBox, ref ComboBox PercentageOfRaceComboBox)
         {
             UtilLib.AddToComboBox<string>(Enum.GetNames(typeof(Class)), ref ClassComboBox);
@@ -52,7 +61,7 @@ namespace RogersErwin_Assign3
                 // Header
                 outputListBox.Items.Clear();
                 outputListBox.Items.Add(string.Format("All {0} from {1}", ClassComboBox.SelectedItem, ServerComboBox.SelectedItem));
-                outputListBox.Items.Add("--------------------------------------------");
+                outputListBox.Items.Add("------------------------------------------------------------------------------------------------");
                 
                 var playersByClassAndServer =
                     from player in PlayerCollection.Player_Collection
@@ -75,8 +84,9 @@ namespace RogersErwin_Assign3
 
                 // Footer
                 outputListBox.Items.Add("");
+
                 outputListBox.Items.Add("END RESULTS");
-                outputListBox.Items.Add("--------------------------------------------");
+                outputListBox.Items.Add("------------------------------------------------------------------------------------------------");
             }
             else
             {
@@ -127,7 +137,8 @@ namespace RogersErwin_Assign3
                 foreach (var i in Enumerable.Range(0, playersPerRace.Length))
                 {
                     double percent = (((double)playersPerRace[i] / (double)players) * 100);
-                    outputListBox.Items.Add(string.Format("{0,10}: {1: 0.00}%", (Race)i, percent));
+                    string formattedRace = (Race)i + ":";
+                    outputListBox.Items.Add(string.Format("{0,-12} {1: 0.00}%", formattedRace, percent));
                 }
             }
             else
@@ -155,7 +166,7 @@ namespace RogersErwin_Assign3
             // Header
             outputListBox.Items.Clear();
             outputListBox.Items.Add("Percentage of Max Level Players in All Guilds");
-            outputListBox.Items.Add("--------------------------------------------");
+            outputListBox.Items.Add("---------------------------------------------");
 
             foreach (var guilds in MaxLvlPlayerFromAllGuilds) // loop through all the guilds
             {
@@ -186,7 +197,7 @@ namespace RogersErwin_Assign3
 
             // Footer
             outputListBox.Items.Add("END RESULTS");
-            outputListBox.Items.Add("--------------------------------------------");
+            outputListBox.Items.Add("---------------------------------------------");
         }
     }
 }
