@@ -28,8 +28,8 @@ namespace RogersErwin_Assign3
             jarDriver = new JARDriver(ref OutputListBox, ref PRSLRolesComboBox, ref PRSLServersComboBox, ref PRSLMinLevelUpDown, ref PRSLMaxLevelUpDown);
             jarDriver.Initializer(ref GuildsPerTypeComboBox);
 
-            //jeeDriver = new JEEDriver(ref OutputListBox, ref ClassComboBox, ref ServerComboBox);
-            //jeeDriver.Initializer(ref ClassComboBox, ref ServerComboBox, ref PercentageOfRaceComboBox);
+            jeeDriver = new JEEDriver(ref OutputListBox, ref ClassComboBox, ref ServerComboBox);
+            jeeDriver.Initializer(ref ClassComboBox, ref ServerComboBox, ref PercentageOfRaceComboBox);
 
         }
 

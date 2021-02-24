@@ -386,7 +386,7 @@ namespace RogersErwin_Assign3
             
             guildName = "<" + guildName + ">";
 
-            string str = String.Format("Name: {0,-15}({1,-8} - {2,-6}) Race: {3,-8} Level: {4,3} Guild: <{5}>", Name, playerClass, role, race, level, guildName);
+            string str = String.Format("Name: {0,-15}({1,-8} - {2,-6}) Race: {3,-8} Level: {4,3} Guild: {5}", Name, playerClass, role, race, level, guildName);
             return str;
         }
 
