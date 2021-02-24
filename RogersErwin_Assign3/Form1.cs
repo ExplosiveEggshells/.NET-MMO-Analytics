@@ -24,10 +24,12 @@ namespace RogersErwin_Assign3
 
             GuildCollection guildCollection = new GuildCollection();
             PlayerCollection playerCollection = new PlayerCollection();
-            JARDriver jarDriver = new JARDriver(ref OutputListBox);
+            
+            jarDriver = new JARDriver(ref OutputListBox, ref PRSLRolesComboBox, ref PRSLServersComboBox, ref PRSLMinLevelUpDown, ref PRSLMaxLevelUpDown);
+            jarDriver.Initializer(ref GuildsPerTypeComboBox);
 
-            jeeDriver = new JEEDriver(ref OutputListBox, ref ClassComboBox, ref ServerComboBox);
-            jeeDriver.Initializer(ref ClassComboBox, ref ServerComboBox, ref PercentageOfRaceComboBox);
+            //jeeDriver = new JEEDriver(ref OutputListBox, ref ClassComboBox, ref ServerComboBox);
+            //jeeDriver.Initializer(ref ClassComboBox, ref ServerComboBox, ref PercentageOfRaceComboBox);
 
         }
 
@@ -70,19 +72,43 @@ namespace RogersErwin_Assign3
             jarDriver.Initializer(ref GuildsPerTypeComboBox);
         }
 
-
+        /*
+         * Objective: 4 - Event handler
+         * 
+         * When the GuildType combo box changes, trigger the 'ShowGuildsPerType'
+         * method within jarDriver. Pass the sender along as well.
+         */
         private void GuildsPerTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (jarDriver == null) return;
             jarDriver.ShowGuildsPerType(sender);
         }
 
+        /*
+         * Objective: 5 - Event handler
+         * 
+         * When any of the Radio Buttons for roles are selected, trigger
+         * the 'ShowUnfulfilledRoles' method within jarDriver. Pass
+         * the sender along as well so it can determine which radio
+         * button was selected.
+         */
         private void FulfillRadioClick(object sender, EventArgs e)
         {
             if (jarDriver == null) return;
             jarDriver.ShowUnfulfilledRoles(sender);
         }
 
+        /*
+         * Objective: 3 - Event handler
+         * 
+         * Whenever either the Min or Max level up/downs
+         * related to objective 3 are changed, run the
+         * 'ConstrainUpDowns' method in jarDriver to make sure
+         * they are logically constrained.
+         * 
+         * Additionally, trigger the 'DoPSRLSearch' to refresh
+         * the query to the new level filter.
+         */
         private void PRSLUpDownChange(object sender, EventArgs e)
         {
             if (jarDriver == null) return;
@@ -90,6 +116,15 @@ namespace RogersErwin_Assign3
             DoPSRLSearch(sender, e);
         }
 
+
+        /*
+         * Objective: 3 - Event handler
+         * 
+         * Whenever any component related to Objective 3 is
+         * changed, trigger the 'PlayersByRoleServerLevel' method
+         * in jarDriver to refresh the query.
+         * 
+         */
         private void DoPSRLSearch(object sender, EventArgs e)
         {
             if (jarDriver == null) return;

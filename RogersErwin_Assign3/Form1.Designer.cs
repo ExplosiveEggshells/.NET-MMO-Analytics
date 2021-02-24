@@ -177,7 +177,7 @@
             this.PRSLServersComboBox.Name = "PRSLServersComboBox";
             this.PRSLServersComboBox.Size = new System.Drawing.Size(121, 21);
             this.PRSLServersComboBox.TabIndex = 4;
-            this.PRSLServersComboBox.SelectionChangeCommitted += new System.EventHandler(this.DoPSRLSearch);
+            this.PRSLServersComboBox.SelectedIndexChanged += new System.EventHandler(this.DoPSRLSearch);
             // 
             // PRSLMinLevelUpDown
             // 

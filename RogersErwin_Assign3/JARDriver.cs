@@ -7,6 +7,10 @@
  * avoid causing merge-conflicts that would otherwise occur when
  * trying to shove all of these methods into Form1.cs.
  * 
+ * Furthermore, passing references to all of the relevant components
+ * rather than hard-coding their names means less names need to be
+ * updated should any given form component be renamed or deleted.
+ * 
  * When instantiated, it is hooked to an outputListBox which will
  * be used to display output from the various requirements denoted within
  * the assignment handout. Ideally, the publically available methods in this
@@ -101,7 +105,7 @@ namespace RogersErwin_Assign3
 
                 foreach (Guild guild in guildsByServer)                                         // For every guild in this grouping...
                 {
-                    outputListBox.Items.Add("   " + guild.Name);                                    // Create a space and print the Guild's name
+                    outputListBox.Items.Add("   <" + guild.Name + ">");                             // Create a space and print the Guild's name
                 }
             }
 
@@ -241,44 +245,5 @@ namespace RogersErwin_Assign3
 
         }
 
-
-        public void PrcRaceInServer(string serverName)
-        {
-            outputListBox.Items.Clear();
-
-            outputListBox.Items.Add("Percent of Each Race From " + serverName);
-            outputListBox.Items.Add("--------------------------------------------");
-
-            const uint numOfRaces = 4;                              // Total number of races in Race enum
-            uint[] numPlayersPerRace = new uint[numOfRaces];        // Array of number of players by race. Array-slots line up with order of Races in the enum.
-            uint numOfPlayers = 0;                                  // Total number of players in this server.
-
-            var PlayersInServerByRace =                                                         // QUERY
-                from KeyValuePair<uint, Player> player in PlayerCollection.Player_Collection    // From every player in the PlayerCollection...
-                where (GuildCollection.At(player.Value.GuildID).ServerName == serverName)       // ...where their guild's server name matches the selected serverName...
-                group player.Value by player.Value.PlayerRace;                                  // ...create groupings of players by their race.
-
-            if (PlayersInServerByRace.Count() == 0)                 // Jump out of this method if there are no players on the server to avoid dividing by zero later.
-            {
-                outputListBox.Items.Add("Wow! Somehow there are no players in this server!");
-                return;
-            }
-
-            foreach (var GroupOfPlayersByRace in PlayersInServerByRace)                                 // For every grouping of players...
-            {
-                numOfPlayers += (uint)GroupOfPlayersByRace.Count<Player>();                                 // Add the Count of that grouping to numOfPlayers
-
-                Race currentRace = GroupOfPlayersByRace.First<Player>().PlayerRace;                         // Get the race of the first entry in that group
-                numPlayersPerRace[(int)currentRace] = (uint)GroupOfPlayersByRace.Count<Player>();           // Add the Count of that group to the slot in numPlayersPerRace that corresponds to the currentRace
-            }
-
-            for (int i = 0; i < numPlayersPerRace.Length; i++)                                  // For every count of players by race...
-            {
-                double percent = (((double)numPlayersPerRace[i] / (double)numOfPlayers) * 100);     // Get the Percentage of total players whom are this race.
-
-                outputListBox.Items.Add(String.Format("{0,8}: {1: 00.00}%", (Race)i, percent));     // Print the Race Name and it's corresponding percentage.
-            }
-
-        }
     }
 }
