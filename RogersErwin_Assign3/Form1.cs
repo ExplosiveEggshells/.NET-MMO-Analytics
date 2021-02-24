@@ -16,6 +16,8 @@ namespace RogersErwin_Assign3
     public partial class Form1 : Form
     {
         JEEDriver jeeDriver; // instantiate JEEDriver class outside of main for wider scope
+        JARDriver jarDriver;
+        
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +28,6 @@ namespace RogersErwin_Assign3
 
             jeeDriver = new JEEDriver(ref OutputListBox, ref ClassComboBox, ref ServerComboBox);
             jeeDriver.Initializer(ref ClassComboBox, ref ServerComboBox, ref PercentageOfRaceComboBox);
-
-            jarDriver.PrintAllPlayers();
 
         }
 
@@ -62,6 +62,38 @@ namespace RogersErwin_Assign3
         {
             if (jeeDriver == null) return;
             jeeDriver.PercentageMaxPlayerQuery();
+            jarDriver = new JARDriver(ref OutputListBox, ref PRSLRolesComboBox, ref PRSLServersComboBox,
+                ref PRSLMinLevelUpDown, ref PRSLMaxLevelUpDown);
+
+
+
+            jarDriver.Initializer(ref GuildsPerTypeComboBox);
+        }
+
+
+        private void GuildsPerTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.ShowGuildsPerType(sender);
+        }
+
+        private void FulfillRadioClick(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.ShowUnfulfilledRoles(sender);
+        }
+
+        private void PRSLUpDownChange(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.ConstrainUpDowns(sender);
+            DoPSRLSearch(sender, e);
+        }
+
+        private void DoPSRLSearch(object sender, EventArgs e)
+        {
+            if (jarDriver == null) return;
+            jarDriver.PlayersByRoleServerLevel();
         }
         #endregion
     }
